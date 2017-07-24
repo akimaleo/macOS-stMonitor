@@ -38,11 +38,11 @@
                     </tabViewItems>
                 </tabView>
                 <view id="bQT-2l-5tB" customClass="InfoView" customModule="stMonitor" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="146" height="121"/>
+                    <rect key="frame" x="0.0" y="0.0" width="146" height="99"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <subviews>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAg-ek-d2D">
-                            <rect key="frame" x="7" y="0.0" width="132" height="121"/>
+                            <rect key="frame" x="7" y="-2" width="132" height="101"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="CPU" placeholderString="" allowsEditingTextAttributes="YES" id="kIm-MC-cY7">
                                 <font key="font" metaFont="system"/>

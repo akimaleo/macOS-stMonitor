@@ -56,18 +56,24 @@ class ViewController: NSObject {
         }
     }
     
+    //SET TITLE TO STATUS ITEM WITH STYLE
     func setItemTitle(_ title:String){
         
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.maximumLineHeight = 11
+        paragraphStyle.maximumLineHeight = 10
         paragraphStyle.alignment = NSTextAlignment.center
+        //TODO: set padding to top of text
+        //        paragraphStyle.paragraphSpacingBefore = 5
+        
         let mySelectedAttributedTitle = NSAttributedString(string: title, attributes:
             [NSFontAttributeName : NSFont.systemFont(ofSize: 10),
              NSParagraphStyleAttributeName: paragraphStyle,
-             NSBaselineOffsetAttributeName:-2])
+             NSBaselineOffsetAttributeName:-2,
+             NSLigatureAttributeName:0])
         
         statusItem.attributedTitle = mySelectedAttributedTitle
         statusItem.length = CGFloat(itemWidth)
+        
     }
     
     //onUpdate
@@ -182,8 +188,10 @@ class ViewController: NSObject {
             batteryIndex+=1
             let pmBattery:Dictionary = unsafeBitCast(pmBatteryPtr, to: CFDictionary.self) as Dictionary
             let cycles = pmBattery["Cycle Count" as NSString] as! Int
+            let fullCapacity = pmBattery["Capacity" as NSString] as! Int
+            let currentCapacity = pmBattery["Current" as NSString] as! Int
             print(pmBattery as! Any)
-            infoView.cpuLabel.stringValue += "\nCycle count: \(cycles)"
+            infoView.cpuLabel.stringValue += "\nCycle count: \(cycles)\nCapacity: \(currentCapacity)/\(fullCapacity) "
             
         }
     }
