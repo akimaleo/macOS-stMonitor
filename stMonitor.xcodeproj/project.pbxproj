@@ -13,7 +13,38 @@
 		00AA34501F1ABE7D00CC14B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00AA344F1F1ABE7D00CC14B9 /* Assets.xcassets */; };
 		00AA34531F1ABE7D00CC14B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00AA34511F1ABE7D00CC14B9 /* Main.storyboard */; };
 		00AA345C1F1B7CBA00CC14B9 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AA345B1F1B7CBA00CC14B9 /* InfoView.swift */; };
+		5214EC872037765000A68F8C /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5214EC862037765000A68F8C /* NotificationCenter.framework */; };
+		5214EC8A2037765000A68F8C /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5214EC892037765000A68F8C /* TodayViewController.swift */; };
+		5214EC8D2037765000A68F8C /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5214EC8B2037765000A68F8C /* TodayViewController.xib */; };
+		5214EC912037765000A68F8C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5214EC8F2037765000A68F8C /* InfoPlist.strings */; };
+		5214EC952037765000A68F8C /* macStatusSidePanel.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5214EC842037765000A68F8C /* macStatusSidePanel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5214EC9C2037766900A68F8C /* SMC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5214EC9B2037766900A68F8C /* SMC.swift */; };
+		5214EC9D2037766900A68F8C /* SMC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5214EC9B2037766900A68F8C /* SMC.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5214EC932037765000A68F8C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 00AA34401F1ABE7D00CC14B9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5214EC832037765000A68F8C;
+			remoteInfo = macStatusSidePanel;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5214EC992037765000A68F8C /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5214EC952037765000A68F8C /* macStatusSidePanel.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		00A9ABC11F1BA49000899B94 /* SMC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMC.swift; sourceTree = "<group>"; };
@@ -24,6 +55,14 @@
 		00AA34521F1ABE7D00CC14B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		00AA34541F1ABE7D00CC14B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00AA345B1F1B7CBA00CC14B9 /* InfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		5214EC842037765000A68F8C /* macStatusSidePanel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = macStatusSidePanel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5214EC862037765000A68F8C /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		5214EC892037765000A68F8C /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		5214EC8C2037765000A68F8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TodayViewController.xib; sourceTree = "<group>"; };
+		5214EC8E2037765000A68F8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5214EC902037765000A68F8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5214EC922037765000A68F8C /* macStatusSidePanel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macStatusSidePanel.entitlements; sourceTree = "<group>"; };
+		5214EC9B2037766900A68F8C /* SMC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,13 +73,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5214EC812037765000A68F8C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5214EC872037765000A68F8C /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		00AA343F1F1ABE7D00CC14B9 = {
 			isa = PBXGroup;
 			children = (
+				5214EC9A2037765B00A68F8C /* SMC */,
 				00AA344A1F1ABE7D00CC14B9 /* stMonitor */,
+				5214EC882037765000A68F8C /* macStatusSidePanel */,
+				5214EC852037765000A68F8C /* Frameworks */,
 				00AA34491F1ABE7D00CC14B9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				00AA34481F1ABE7D00CC14B9 /* stMonitor.app */,
+				5214EC842037765000A68F8C /* macStatusSidePanel.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -75,6 +126,34 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		5214EC852037765000A68F8C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5214EC862037765000A68F8C /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5214EC882037765000A68F8C /* macStatusSidePanel */ = {
+			isa = PBXGroup;
+			children = (
+				5214EC892037765000A68F8C /* TodayViewController.swift */,
+				5214EC8B2037765000A68F8C /* TodayViewController.xib */,
+				5214EC8E2037765000A68F8C /* Info.plist */,
+				5214EC8F2037765000A68F8C /* InfoPlist.strings */,
+				5214EC922037765000A68F8C /* macStatusSidePanel.entitlements */,
+			);
+			path = macStatusSidePanel;
+			sourceTree = "<group>";
+		};
+		5214EC9A2037765B00A68F8C /* SMC */ = {
+			isa = PBXGroup;
+			children = (
+				5214EC9B2037766900A68F8C /* SMC.swift */,
+			);
+			path = SMC;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -85,15 +164,34 @@
 				00AA34441F1ABE7D00CC14B9 /* Sources */,
 				00AA34451F1ABE7D00CC14B9 /* Frameworks */,
 				00AA34461F1ABE7D00CC14B9 /* Resources */,
+				5214EC992037765000A68F8C /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5214EC942037765000A68F8C /* PBXTargetDependency */,
 			);
 			name = stMonitor;
 			productName = stMonitor;
 			productReference = 00AA34481F1ABE7D00CC14B9 /* stMonitor.app */;
 			productType = "com.apple.product-type.application";
+		};
+		5214EC832037765000A68F8C /* macStatusSidePanel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5214EC982037765000A68F8C /* Build configuration list for PBXNativeTarget "macStatusSidePanel" */;
+			buildPhases = (
+				5214EC802037765000A68F8C /* Sources */,
+				5214EC812037765000A68F8C /* Frameworks */,
+				5214EC822037765000A68F8C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = macStatusSidePanel;
+			productName = macStatusSidePanel;
+			productReference = 5214EC842037765000A68F8C /* macStatusSidePanel.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -101,12 +199,17 @@
 		00AA34401F1ABE7D00CC14B9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0830;
+				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = letit0or1;
 				TargetAttributes = {
 					00AA34471F1ABE7D00CC14B9 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 73GFM555J9;
+						ProvisioningStyle = Automatic;
+					};
+					5214EC832037765000A68F8C = {
+						CreatedOnToolsVersion = 9.2;
 						DevelopmentTeam = 73GFM555J9;
 						ProvisioningStyle = Automatic;
 					};
@@ -126,6 +229,7 @@
 			projectRoot = "";
 			targets = (
 				00AA34471F1ABE7D00CC14B9 /* stMonitor */,
+				5214EC832037765000A68F8C /* macStatusSidePanel */,
 			);
 		};
 /* End PBXProject section */
@@ -140,6 +244,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5214EC822037765000A68F8C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5214EC8D2037765000A68F8C /* TodayViewController.xib in Resources */,
+				5214EC912037765000A68F8C /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -148,13 +261,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				00AA344E1F1ABE7D00CC14B9 /* ViewController.swift in Sources */,
+				5214EC9C2037766900A68F8C /* SMC.swift in Sources */,
 				00AA345C1F1B7CBA00CC14B9 /* InfoView.swift in Sources */,
 				00AA344C1F1ABE7D00CC14B9 /* AppDelegate.swift in Sources */,
 				00A9ABC21F1BA49000899B94 /* SMC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5214EC802037765000A68F8C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5214EC8A2037765000A68F8C /* TodayViewController.swift in Sources */,
+				5214EC9D2037766900A68F8C /* SMC.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5214EC942037765000A68F8C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5214EC832037765000A68F8C /* macStatusSidePanel */;
+			targetProxy = 5214EC932037765000A68F8C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		00AA34511F1ABE7D00CC14B9 /* Main.storyboard */ = {
@@ -163,6 +294,22 @@
 				00AA34521F1ABE7D00CC14B9 /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5214EC8B2037765000A68F8C /* TodayViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5214EC8C2037765000A68F8C /* Base */,
+			);
+			name = TodayViewController.xib;
+			sourceTree = "<group>";
+		};
+		5214EC8F2037765000A68F8C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5214EC902037765000A68F8C /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -263,6 +410,7 @@
 		00AA34581F1ABE7D00CC14B9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 73GFM555J9;
@@ -277,6 +425,7 @@
 		00AA34591F1ABE7D00CC14B9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 73GFM555J9;
@@ -285,6 +434,60 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.letit0or1.akimaleo.stMonitor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		5214EC962037765000A68F8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = macStatusSidePanel/macStatusSidePanel.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 73GFM555J9;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = macStatusSidePanel/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = com.letit0or1.akimaleo.stMonitor.macStatusSidePanel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		5214EC972037765000A68F8C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = macStatusSidePanel/macStatusSidePanel.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 73GFM555J9;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = macStatusSidePanel/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = com.letit0or1.akimaleo.stMonitor.macStatusSidePanel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -305,6 +508,15 @@
 			buildConfigurations = (
 				00AA34581F1ABE7D00CC14B9 /* Debug */,
 				00AA34591F1ABE7D00CC14B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5214EC982037765000A68F8C /* Build configuration list for PBXNativeTarget "macStatusSidePanel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5214EC962037765000A68F8C /* Debug */,
+				5214EC972037765000A68F8C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
