@@ -20,6 +20,10 @@
 		5214EC952037765000A68F8C /* macStatusSidePanel.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5214EC842037765000A68F8C /* macStatusSidePanel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5214EC9C2037766900A68F8C /* SMC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5214EC9B2037766900A68F8C /* SMC.swift */; };
 		5214EC9D2037766900A68F8C /* SMC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5214EC9B2037766900A68F8C /* SMC.swift */; };
+		5214EC9F2037786600A68F8C /* SMCUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5214EC9E2037786600A68F8C /* SMCUtil.swift */; };
+		5214ECA02037786600A68F8C /* SMCUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5214EC9E2037786600A68F8C /* SMCUtil.swift */; };
+		5214ECA420377CD700A68F8C /* FanData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5214ECA320377CD700A68F8C /* FanData.swift */; };
+		5214ECA520377CD700A68F8C /* FanData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5214ECA320377CD700A68F8C /* FanData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +67,8 @@
 		5214EC902037765000A68F8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5214EC922037765000A68F8C /* macStatusSidePanel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macStatusSidePanel.entitlements; sourceTree = "<group>"; };
 		5214EC9B2037766900A68F8C /* SMC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMC.swift; sourceTree = "<group>"; };
+		5214EC9E2037786600A68F8C /* SMCUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMCUtil.swift; sourceTree = "<group>"; };
+		5214ECA320377CD700A68F8C /* FanData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FanData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,9 +155,27 @@
 		5214EC9A2037765B00A68F8C /* SMC */ = {
 			isa = PBXGroup;
 			children = (
-				5214EC9B2037766900A68F8C /* SMC.swift */,
+				5214ECA6203781B300A68F8C /* util */,
+				5214ECA120377C8A00A68F8C /* entity */,
 			);
 			path = SMC;
+			sourceTree = "<group>";
+		};
+		5214ECA120377C8A00A68F8C /* entity */ = {
+			isa = PBXGroup;
+			children = (
+				5214ECA320377CD700A68F8C /* FanData.swift */,
+			);
+			path = entity;
+			sourceTree = "<group>";
+		};
+		5214ECA6203781B300A68F8C /* util */ = {
+			isa = PBXGroup;
+			children = (
+				5214EC9B2037766900A68F8C /* SMC.swift */,
+				5214EC9E2037786600A68F8C /* SMCUtil.swift */,
+			);
+			path = util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +285,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				00AA344E1F1ABE7D00CC14B9 /* ViewController.swift in Sources */,
+				5214EC9F2037786600A68F8C /* SMCUtil.swift in Sources */,
+				5214ECA420377CD700A68F8C /* FanData.swift in Sources */,
 				5214EC9C2037766900A68F8C /* SMC.swift in Sources */,
 				00AA345C1F1B7CBA00CC14B9 /* InfoView.swift in Sources */,
 				00AA344C1F1ABE7D00CC14B9 /* AppDelegate.swift in Sources */,
@@ -273,6 +299,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5214EC8A2037765000A68F8C /* TodayViewController.swift in Sources */,
+				5214ECA520377CD700A68F8C /* FanData.swift in Sources */,
+				5214ECA02037786600A68F8C /* SMCUtil.swift in Sources */,
 				5214EC9D2037766900A68F8C /* SMC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
