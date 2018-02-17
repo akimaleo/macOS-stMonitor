@@ -7,6 +7,9 @@
 //
 
 import Foundation
+import SystemConfiguration
+import IOKit.ps
+import IOKit.pwr_mgt
 
 class SMCUtil{
     //singleton instance
@@ -75,41 +78,44 @@ class SMCUtil{
     }
     
     //Battery capacity information
-//    func batteryInfo(){
-//        //get power sources array
-//        let powerSourcesInfo : AnyObject! = IOPSCopyPowerSourcesInfo().takeUnretainedValue()
-//        let batteryArray : NSArray = IOPSCopyPowerSourcesList(powerSourcesInfo).takeUnretainedValue()
-//        
-//        //get power management object
-//        let nullPort : UInt32 = UInt32(MACH_PORT_NULL)
-//        let powerManagement : io_connect_t = IOPMFindPowerManagement(nullPort)
-//        
-//        //get power management battery info array
-//        let batteryInfoPtr : UnsafeMutablePointer<Unmanaged<CFArray>?> = UnsafeMutablePointer.allocate(capacity: MemoryLayout<Unmanaged<CFArray>?>.size)
-//        let batteryResult:IOReturn = IOPMCopyBatteryInfo(nullPort, batteryInfoPtr)
-//        let batteryInfo:NSArray? = batteryInfoPtr.pointee?.takeUnretainedValue()
-//        
-//        //close service
-//        IOServiceClose(powerManagement)
-//        
-//        //output data
-//        var batteryIndex:Int = 0
-//        for nextSource in batteryArray
-//        {
-//            //            infoView.cpuLabel.stringValue += "\nRight fan: \(currentSpeed)"
-//            //            print("Battery "+String(batteryIndex)+" Status:")
-//            //            print(nextSource)
-//            let pmBatteryPtr:UnsafeRawPointer = CFArrayGetValueAtIndex(batteryInfo, batteryIndex)
-//            batteryIndex+=1
-//            let pmBattery:Dictionary = unsafeBitCast(pmBatteryPtr, to: CFDictionary.self) as Dictionary
-//            let cycles = pmBattery["Cycle Count" as NSString] as! Int
-//            let fullCapacity = pmBattery["Capacity" as NSString] as! Int
-//            let currentCapacity = pmBattery["Current" as NSString] as! Int
-//            print(pmBattery as! Any)
-//            infoView.cpuLabel.stringValue += "\nCycle count: \(cycles)\nCapacity: \(currentCapacity)/\(fullCapacity) "
-//            
-//        }
-//    }
+    func getBatteryInfo() -> [BatteryData]{
+        //get power sources array
+        var batteryDataArray:[BatteryData] = []
+        let powerSourcesInfo : AnyObject! = IOPSCopyPowerSourcesInfo().takeUnretainedValue()
+        let batteryArray : NSArray = IOPSCopyPowerSourcesList(powerSourcesInfo).takeUnretainedValue()
+        
+        //get power management object
+        let nullPort : UInt32 = UInt32(MACH_PORT_NULL)
+        let powerManagement : io_connect_t = IOPMFindPowerManagement(nullPort)
+        
+        //get power management battery info array
+        let batteryInfoPtr : UnsafeMutablePointer<Unmanaged<CFArray>?> = UnsafeMutablePointer.allocate(capacity: MemoryLayout<Unmanaged<CFArray>?>.size)
+        let batteryResult:IOReturn = IOPMCopyBatteryInfo(nullPort, batteryInfoPtr)
+        let batteryInfo:NSArray? = batteryInfoPtr.pointee?.takeUnretainedValue()
+        
+        //close service
+        IOServiceClose(powerManagement)
+        
+        //output data
+        var batteryIndex:Int = 0
+        for nextSource in batteryArray
+        {
+            //            infoView.cpuLabel.stringValue += "\nRight fan: \(currentSpeed)"
+            //            print("Battery "+String(batteryIndex)+" Status:")
+            //            print(nextSource)
+            let pmBatteryPtr:UnsafeRawPointer = CFArrayGetValueAtIndex(batteryInfo, batteryIndex)
+            batteryIndex+=1
+            let pmBattery:Dictionary = unsafeBitCast(pmBatteryPtr, to: CFDictionary.self) as Dictionary
+            let cycles = pmBattery["Cycle Count" as NSString] as! Int
+            let fullCapacity = pmBattery["Capacity" as NSString] as! Int
+            let currentCapacity = pmBattery["Current" as NSString] as! Int
+            print(pmBattery)
+            //            infoView.cpuLabel.stringValue += "\nCycle count: \(cycles)\nCapacity: \(currentCapacity)/\(fullCapacity) "
+            
+            batteryDataArray += [BatteryData(cyclesCount:cycles, fullCapacity:currentCapacity, currentCapacity:fullCapacity) ]
+        }
+        return batteryDataArray
+    }
 }
 
 //names for notification actions

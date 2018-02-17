@@ -35,3 +35,15 @@ class SensorData{
         self.temperature = temperature
     }
 }
+
+class BatteryData{
+    var cyclesCount:Int
+    var fullCapacity:Int
+    var currentCapacity:Int
+    
+    init(cyclesCount:Int, fullCapacity:Int, currentCapacity:Int){
+        self.cyclesCount = cyclesCount
+        self.fullCapacity = fullCapacity
+        self.currentCapacity = currentCapacity
+    }
+}
