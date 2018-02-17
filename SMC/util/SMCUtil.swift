@@ -15,7 +15,11 @@ class SMCUtil{
     public var initialized:Bool = false
     
     private init(){
-        open()
+        if open(){
+            print("initialized")
+        }else{
+            print("initialization error")
+        }
     }
     
     //open SMCKit instance
@@ -50,22 +54,50 @@ class SMCUtil{
     }
     
     //get sensors array
-    private func getSensors(known: Bool = true) -> [TemperatureSensor]{
-        var sensors: [TemperatureSensor] = []
+    public func getSensors(known: Bool = true) -> [SensorData]{
+        var sensors: [SensorData] = []
+        var originSensors:[TemperatureSensor] = []
         do {
             if known {
-                sensors = try SMCKit.allKnownTemperatureSensors().sorted
-                    { $0.name < $1.name }
+                originSensors = try SMCKit.allKnownTemperatureSensors()
             } else {
-                sensors = try SMCKit.allUnknownTemperatureSensors()
+                originSensors = try SMCKit.allUnknownTemperatureSensors()
+            }
+            sensors =  try originSensors.map{
+                SensorData(name: $0.name,
+                           code: $0.code,
+                           temperature: try SMCKit.temperature($0.code))
             }
         } catch {
             print(error)
         }
         return sensors
     }
-    public func getCPUTemperatureProximity(){
+    
+    func printTemperatureInformation() {
+        print("-- Temperature --")
+        let sensors: [SensorData] = getSensors()
         
+        let sensorWithLongestName = sensors.max { $0.name.characters.count <
+            $1.name.characters.count }
+        
+        guard let longestSensorNameCount = sensorWithLongestName?.name.characters.count else {
+            print("No temperature sensors found")
+            return
+        }
+        for sensor in sensors {
+            
+            guard let temperature = try? SMCKit.temperature(sensor.code) else {
+                print("NA")
+                return
+            }
+            if sensor.name == "CPU_0_PROXIMITY"{
+                
+            }
+            if sensor.name == "GPU"{
+                
+            }
+        }
     }
 }
 

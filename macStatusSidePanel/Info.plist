@@ -29,6 +29,8 @@
 			<key>NSExtensionPointVersion</key>
 			<string>2.0</string>
 		</dict>
+		<key>NSExtensionMainNibFile</key>
+		<string>TodayViewController</string>
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.widget-extension</string>
 		<key>NSExtensionPrincipalClass</key>

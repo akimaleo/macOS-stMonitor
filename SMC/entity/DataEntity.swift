@@ -23,3 +23,15 @@ class FanData {
         self.currentSpeed = currentSpeed
     }
 }
+
+class SensorData{
+    var name: String
+    var code: FourCharCode
+    var temperature:Double
+    
+    init(name: String, code: FourCharCode, temperature:Double){
+        self.name = name
+        self.code = code
+        self.temperature = temperature
+    }
+}

@@ -80,43 +80,38 @@ class ViewController: NSObject {
     //CPU temperature
     func printTemperatureInformation(known: Bool = true) {
         print("-- Temperature --")
+        let sensors = SMCUtil.instance.getSensors()
+//        let sensors: [TemperatureSensor]
+//        do {
+//            if known {
+//                sensors = try SMCKit.allKnownTemperatureSensors().sorted
+//                    { $0.name < $1.name }
+//            } else {
+//                sensors = try SMCKit.allUnknownTemperatureSensors()
+//            }
+//
+//        } catch {
+//            print(error)
+//            return
+//        }
         
-        let sensors: [TemperatureSensor]
-        do {
-            if known {
-                sensors = try SMCKit.allKnownTemperatureSensors().sorted
-                    { $0.name < $1.name }
-            } else {
-                sensors = try SMCKit.allUnknownTemperatureSensors()
-            }
-            
-        } catch {
-            print(error)
-            return
-        }
         
-        
-        let sensorWithLongestName = sensors.max { $0.name.characters.count <
-            $1.name.characters.count }
-        
-        guard let longestSensorNameCount = sensorWithLongestName?.name.characters.count else {
-            print("No temperature sensors found")
-            return
-        }
+//        let sensorWithLongestName = sensors.max { $0.name.characters.count <
+//            $1.name.characters.count }
+//
+//        guard let longestSensorNameCount = sensorWithLongestName?.name.characters.count else {
+//            print("No temperature sensors found")
+//            return
+//        }
         
         
         for sensor in sensors {
-            
-            guard let temperature = try? SMCKit.temperature(sensor.code) else {
-                print("NA")
-                return
-            }
             if sensor.name == "CPU_0_PROXIMITY"{
-                setItemTitle("\(temperature)°\n")
-                infoView.cpuLabel.stringValue += "CPU: \(temperature)°"
+                setItemTitle("\(sensor.temperature)°\n")
+                infoView.cpuLabel.stringValue += "CPU: \(sensor.temperature)°"
             }
             if sensor.name == "GPU"{
-                infoView.cpuLabel.stringValue += "\nGPU: \(temperature)"
+                infoView.cpuLabel.stringValue += "\nGPU: \(sensor.temperature)"
             }
         }
     }
@@ -125,9 +120,6 @@ class ViewController: NSObject {
     func printFanInformation() {
         print("-- Fan --")
         let allFans: [FanData] = SMCUtil.instance.getFans()
-        if allFans.count == 0 {
-            print("No fans found")
-            return}
         for fan in allFans {
             if fan.id == 0{
                 infoView.cpuLabel.stringValue += "\nLeft fan: \(fan.currentSpeed)"
