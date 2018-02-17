@@ -81,30 +81,6 @@ class ViewController: NSObject {
     func printTemperatureInformation(known: Bool = true) {
         print("-- Temperature --")
         let sensors = SMCUtil.instance.getSensors()
-//        let sensors: [TemperatureSensor]
-//        do {
-//            if known {
-//                sensors = try SMCKit.allKnownTemperatureSensors().sorted
-//                    { $0.name < $1.name }
-//            } else {
-//                sensors = try SMCKit.allUnknownTemperatureSensors()
-//            }
-//
-//        } catch {
-//            print(error)
-//            return
-//        }
-        
-        
-//        let sensorWithLongestName = sensors.max { $0.name.characters.count <
-//            $1.name.characters.count }
-//
-//        guard let longestSensorNameCount = sensorWithLongestName?.name.characters.count else {
-//            print("No temperature sensors found")
-//            return
-//        }
-        
-        
         for sensor in sensors {
             if sensor.name == "CPU_0_PROXIMITY"{
                 setItemTitle("\(sensor.temperature)°\n")
@@ -131,42 +107,4 @@ class ViewController: NSObject {
             }
         }
     }
-    
-    //Battery capacity information
-    func batteryInfo(){
-        //get power sources array
-        let powerSourcesInfo : AnyObject! = IOPSCopyPowerSourcesInfo().takeUnretainedValue()
-        let batteryArray : NSArray = IOPSCopyPowerSourcesList(powerSourcesInfo).takeUnretainedValue()
-        
-        //get power management object
-        let nullPort : UInt32 = UInt32(MACH_PORT_NULL)
-        let powerManagement : io_connect_t = IOPMFindPowerManagement(nullPort)
-        
-        //get power management battery info array
-        let batteryInfoPtr : UnsafeMutablePointer<Unmanaged<CFArray>?> = UnsafeMutablePointer.allocate(capacity: MemoryLayout<Unmanaged<CFArray>?>.size)
-        let batteryResult:IOReturn = IOPMCopyBatteryInfo(nullPort, batteryInfoPtr)
-        let batteryInfo:NSArray? = batteryInfoPtr.pointee?.takeUnretainedValue()
-        
-        //close service
-        IOServiceClose(powerManagement)
-        
-        //output data
-        var batteryIndex:Int = 0
-        for nextSource in batteryArray
-        {
-            //            infoView.cpuLabel.stringValue += "\nRight fan: \(currentSpeed)"
-            //            print("Battery "+String(batteryIndex)+" Status:")
-            //            print(nextSource)
-            let pmBatteryPtr:UnsafeRawPointer = CFArrayGetValueAtIndex(batteryInfo, batteryIndex)
-            batteryIndex+=1
-            let pmBattery:Dictionary = unsafeBitCast(pmBatteryPtr, to: CFDictionary.self) as Dictionary
-            let cycles = pmBattery["Cycle Count" as NSString] as! Int
-            let fullCapacity = pmBattery["Capacity" as NSString] as! Int
-            let currentCapacity = pmBattery["Current" as NSString] as! Int
-            print(pmBattery as! Any)
-            infoView.cpuLabel.stringValue += "\nCycle count: \(cycles)\nCapacity: \(currentCapacity)/\(fullCapacity) "
-            
-        }
-    }
 }
-
