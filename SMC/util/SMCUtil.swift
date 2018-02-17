@@ -19,7 +19,7 @@ class SMCUtil{
     }
     
     //open SMCKit instance
-    private func open() -> Bool{
+    public func open() -> Bool{
         do {
             try SMCKit.open()
             initialized = true
@@ -47,6 +47,25 @@ class SMCUtil{
             NotificationCenter.default.post(name: .openError, object: nil)
         }
         return retFans
+    }
+    
+    //get sensors array
+    private func getSensors(known: Bool = true) -> [TemperatureSensor]{
+        var sensors: [TemperatureSensor] = []
+        do {
+            if known {
+                sensors = try SMCKit.allKnownTemperatureSensors().sorted
+                    { $0.name < $1.name }
+            } else {
+                sensors = try SMCKit.allUnknownTemperatureSensors()
+            }
+        } catch {
+            print(error)
+        }
+        return sensors
+    }
+    public func getCPUTemperatureProximity(){
+        
     }
 }
 

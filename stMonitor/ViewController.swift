@@ -11,8 +11,6 @@ import SystemConfiguration
 import IOKit.ps
 import IOKit.pwr_mgt
 
-
-
 class ViewController: NSObject {
     
     @IBOutlet weak var statusMenu: NSMenu!
@@ -40,11 +38,6 @@ class ViewController: NSObject {
         statusItem.menu = statusMenu
         statusMenu.items[0].view = infoView
         
-        //SMC INITIALIZATION
-        do{
-            try SMCKit.open()
-        }catch{}
-        
         //BACKGROUND TIMER
         DispatchQueue.global(qos: .background).async {
             while true {
@@ -62,8 +55,8 @@ class ViewController: NSObject {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.maximumLineHeight = 10
         paragraphStyle.alignment = NSTextAlignment.center
+        
         //TODO: set padding to top of text
-        //        paragraphStyle.paragraphSpacingBefore = 5
         
         let mySelectedAttributedTitle = NSAttributedString(string: title, attributes:
             [NSFontAttributeName : NSFont.systemFont(ofSize: 10),
@@ -131,31 +124,19 @@ class ViewController: NSObject {
     //Fan information print
     func printFanInformation() {
         print("-- Fan --")
-        let allFans: [Fan]
-        
-        do {
-            allFans = try SMCKit.allFans()
-        } catch {
-            print(error)
-            return
-        }
-        
-        if allFans.count == 0 { print("No fans found") }
-        
+        let allFans: [FanData] = SMCUtil.instance.getFans()
+        if allFans.count == 0 {
+            print("No fans found")
+            return}
         for fan in allFans {
-            guard let currentSpeed = try? SMCKit.fanCurrentSpeed(fan.id) else {
-                print("\tCurrent:  NA")
-                return
-            }
             if fan.id == 0{
-                infoView.cpuLabel.stringValue += "\nLeft fan: \(currentSpeed)"
-                setItemTitle(statusItem.title!+"\(currentSpeed)")
+                infoView.cpuLabel.stringValue += "\nLeft fan: \(fan.currentSpeed)"
+                setItemTitle(statusItem.title!+"\(fan.currentSpeed)")
             }
             else if fan.id == 1{
-                infoView.cpuLabel.stringValue += "\nRight fan: \(currentSpeed)"
-                setItemTitle(statusItem.title!+" | \(currentSpeed)")
+                infoView.cpuLabel.stringValue += "\nRight fan: \(fan.currentSpeed)"
+                setItemTitle(statusItem.title!+" | \(fan.currentSpeed)")
             }
-            
         }
     }
     
