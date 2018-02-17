@@ -1,5 +1,5 @@
 # macOS-stMonitor
-Status monitor. It shows some information about hardware information.
+Status monitor. It shows some information about hardware.
 
 ## Status bar item.
   - Temperature of CPU proximity.
